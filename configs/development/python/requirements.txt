@@ -1,0 +1,42 @@
+# Python 开发环境依赖包
+# 安装命令: pip install -r requirements.txt
+
+# 基础工具
+pip>=21.0
+setuptools>=60.0
+wheel>=0.37.0
+
+# 代码质量
+pylint>=2.15.0
+black>=22.0.0
+isort>=5.10.0
+flake8>=5.0.0
+
+# 测试工具
+pytest>=7.0.0
+pytest-cov>=4.0.0
+coverage>=6.0.0
+
+# 文档工具
+sphinx>=5.0.0
+mkdocs>=1.4.0
+
+# 开发工具
+ipython>=8.0.0
+jupyter>=1.0.0
+requests>=2.28.0
+
+# Web 开发
+flask>=2.2.0
+fastapi>=0.85.0
+django>=4.1.0
+
+# 数据处理
+pandas>=1.5.0
+numpy>=1.23.0
+matplotlib>=3.6.0
+
+# 实用工具
+python-dotenv>=0.21.0
+click>=8.1.0
+rich>=12.6.0
