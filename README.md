@@ -2,8 +2,8 @@
 
 > 个人数字工作空间 - 统一管理知识、工具和资源的集成化仓库
 
-[![GitHub last commit](https://img.shields.io/github/last-commit/yourusername/personal-workspace)]()
-[![GitHub repo size](https://img.shields.io/github/repo-size/yourusername/personal-workspace)]()
+[![GitHub last commit](https://img.shields.io/github/last-commit/kekemao00/personal-workspace)]()
+[![GitHub repo size](https://img.shields.io/github/repo-size/kekemao00/personal-workspace)]()
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)]()
 
 ## 📋 目录
