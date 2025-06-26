@@ -119,7 +119,7 @@ cd personal-workspace
 # 一键设置（推荐）
 python3 setup.py
 
-# 或分步执行
+# 或分步执行(scripts\utilities\file-management\dirgen)
 python3 create_directories.py      # 创建目录结构
 python3 create_template_files.py   # 创建模板文件
 python3 create_readme.py           # 生成 README 文件

@@ -22,6 +22,8 @@ python3 setup.py
 
 #### 方法二：单独执行脚本
 
+> `scripts\utilities\file-management\dirgen`
+
 ```bash
 # 1. 创建目录结构
 python3 create_directories.py
