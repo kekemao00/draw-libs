@@ -1,18 +1,18 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-README Generator with Hyperlinks
-生成带有超链接的 README 文件
+Updated README Generator with Optimized Navigation
+生成带有优化导航的 README 文件 - 替换原 create_readme.py
 """
 
 import os
 from pathlib import Path
 from datetime import datetime
 
-def create_readme_with_links():
-  """创建带有超链接的 README.md 文件"""
+def create_optimized_readme():
+  """创建优化版 README.md 文件"""
   
-  print("📖 开始生成 README.md 文件...")
+  print("📖 开始生成优化版 README.md 文件...")
   print("=" * 50)
   
   readme_content = f"""# 🗂️ Personal Workspace
@@ -27,6 +27,7 @@ def create_readme_with_links():
 
 - [🎯 项目简介](#-项目简介)
 - [📁 目录结构](#-目录结构)
+- [🗂️ 快速导航](#️-快速导航)
 - [🚀 快速开始](#-快速开始)
 - [📚 使用指南](#-使用指南)
 - [🔧 配置说明](#-配置说明)
@@ -47,127 +48,80 @@ def create_readme_with_links():
 
 ## 📁 目录结构
 
+### 整体结构概览
+
 ```
 personal-workspace/
 ├── 📚 notes/                          # 笔记文档
-│   ├── 💻 [tech/](./notes/tech/)                     # 技术相关笔记
-│   │   ├── [programming/](./notes/tech/programming/)         # 编程笔记
-│   │   ├── [tools/](./notes/tech/tools/)                   # 工具使用笔记
-│   │   ├── [frameworks/](./notes/tech/frameworks/)           # 框架学习笔记
-│   │   └── [troubleshooting/](./notes/tech/troubleshooting/) # 问题解决记录
-│   ├── 📖 [learning/](./notes/learning/)             # 学习相关笔记
-│   │   ├── [courses/](./notes/learning/courses/)           # 课程笔记
-│   │   ├── [books/](./notes/learning/books/)               # 读书笔记
-│   │   ├── [tutorials/](./notes/learning/tutorials/)       # 教程笔记
-│   │   └── [research/](./notes/learning/research/)         # 研究资料
-│   ├── 💼 [work/](./notes/work/)                     # 工作相关笔记
-│   │   ├── [projects/](./notes/work/projects/)             # 项目相关
-│   │   ├── [meetings/](./notes/work/meetings/)             # 会议记录
-│   │   └── [ideas/](./notes/work/ideas/)                   # 想法记录
-│   └── 👤 [personal/](./notes/personal/)             # 个人笔记
-│       ├── [daily/](./notes/personal/daily/)               # 日常记录
-│       ├── [goals/](./notes/personal/goals/)               # 目标规划
-│       └── [reflections/](./notes/personal/reflections/)   # 反思总结
-│
+│   ├── 💻 tech/                       # 技术相关笔记
+│   ├── 📖 learning/                   # 学习相关笔记
+│   ├── 💼 work/                       # 工作相关笔记
+│   └── 👤 personal/                   # 个人笔记
 ├── 🛠️ scripts/                        # 脚本工具
-│   ├── 📦 [install/](./scripts/install/)             # 安装脚本
-│   │   ├── [dev-environment/](./scripts/install/dev-environment/) # 开发环境安装
-│   │   ├── [applications/](./scripts/install/applications/)       # 应用程序安装
-│   │   └── [system-setup/](./scripts/install/system-setup/)       # 系统配置
-│   ├── 🤖 [automation/](./scripts/automation/)       # 自动化脚本
-│   │   ├── [backup/](./scripts/automation/backup/)             # 备份脚本
-│   │   ├── [deployment/](./scripts/automation/deployment/)     # 部署脚本
-│   │   ├── [monitoring/](./scripts/automation/monitoring/)     # 监控脚本
-│   │   └── [maintenance/](./scripts/automation/maintenance/)   # 维护脚本
-│   ├── 🔧 [utilities/](./scripts/utilities/)         # 实用工具
-│   │   ├── [file-management/](./scripts/utilities/file-management/) # 文件管理
-│   │   ├── [data-processing/](./scripts/utilities/data-processing/) # 数据处理
-│   │   └── [system-tools/](./scripts/utilities/system-tools/)       # 系统工具
-│   └── 🏷️ [aliases/](./scripts/aliases/)             # 命令别名
-│       ├── [bash_aliases](./scripts/aliases/bash_aliases)      # Bash 别名
-│       ├── [git_aliases](./scripts/aliases/git_aliases)        # Git 别名
-│       └── [custom_commands](./scripts/aliases/custom_commands) # 自定义命令
-│
+│   ├── 📦 install/                    # 安装脚本
+│   ├── 🤖 automation/                 # 自动化脚本
+│   ├── 🔧 utilities/                  # 实用工具
+│   └── 🏷️ aliases/                    # 命令别名
 ├── 🎨 diagrams/                       # 图表设计
-│   ├── 🖼️ [drawio/](./diagrams/drawio/)              # Draw.io 文件
-│   │   ├── [architecture/](./diagrams/drawio/architecture/)   # 架构图
-│   │   ├── [flowcharts/](./diagrams/drawio/flowcharts/)       # 流程图
-│   │   ├── [network/](./diagrams/drawio/network/)             # 网络拓扑图
-│   │   └── [ui-mockups/](./diagrams/drawio/ui-mockups/)       # UI 原型图
-│   ├── 🧠 [mindmaps/](./diagrams/mindmaps/)          # 思维导图
-│   │   ├── [learning/](./diagrams/mindmaps/learning/)         # 学习思维导图
-│   │   ├── [projects/](./diagrams/mindmaps/projects/)         # 项目思维导图
-│   │   └── [brainstorming/](./diagrams/mindmaps/brainstorming/) # 头脑风暴
-│   ├── 📊 [plantuml/](./diagrams/plantuml/)          # PlantUML 图表
-│   └── 🖼️ [exports/](./diagrams/exports/)            # 导出的图片文件
-│
 ├── 🎮 gaming/                         # 游戏资源
-│   ├── 📖 [guides/](./gaming/guides/)                # 游戏指南
-│   │   ├── [walkthroughs/](./gaming/guides/walkthroughs/)     # 游戏攻略
-│   │   ├── [strategies/](./gaming/guides/strategies/)         # 策略指南
-│   │   └── [tips-tricks/](./gaming/guides/tips-tricks/)       # 技巧分享
-│   ├── ⚙️ [configs/](./gaming/configs/)              # 游戏配置
-│   │   ├── [game-settings/](./gaming/configs/game-settings/)  # 游戏设置
-│   │   ├── [mods/](./gaming/configs/mods/)                    # MOD 配置
-│   │   └── [keybindings/](./gaming/configs/keybindings/)      # 按键绑定
-│   ├── 📝 [reviews/](./gaming/reviews/)              # 游戏评测
-│   │   ├── [game-reviews/](./gaming/reviews/game-reviews/)    # 游戏评测
-│   │   ├── [hardware-reviews/](./gaming/reviews/hardware-reviews/) # 硬件评测
-│   │   └── [recommendations/](./gaming/reviews/recommendations/)    # 推荐列表
-│   └── 💾 [saves/](./gaming/saves/)                  # 游戏存档备份
-│
 ├── ⚙️ configs/                        # 配置文件
-│   ├── 💻 [development/](./configs/development/)      # 开发配置
-│   │   ├── [vscode/](./configs/development/vscode/)           # VS Code 配置
-│   │   ├── [git/](./configs/development/git/)                 # Git 配置
-│   │   ├── [terminal/](./configs/development/terminal/)       # 终端配置
-│   │   └── [editors/](./configs/development/editors/)         # 编辑器配置
-│   ├── 🖥️ [system/](./configs/system/)               # 系统配置
-│   │   ├── [dotfiles/](./configs/system/dotfiles/)           # 系统配置文件
-│   │   ├── [environment/](./configs/system/environment/)     # 环境变量
-│   │   └── [startup/](./configs/system/startup/)             # 启动脚本
-│   └── 📱 [applications/](./configs/applications/)   # 应用配置
-│       ├── [browsers/](./configs/applications/browsers/)     # 浏览器配置
-│       ├── [media/](./configs/applications/media/)           # 媒体软件配置
-│       └── [productivity/](./configs/applications/productivity/) # 生产力工具配置
-│
 ├── 📋 templates/                      # 模板文件
-│   ├── 📄 [documents/](./templates/documents/)       # 文档模板
-│   │   ├── [meeting-notes.md](./templates/documents/meeting-notes.md)     # 会议记录模板
-│   │   ├── [project-plan.md](./templates/documents/project-plan.md)       # 项目计划模板
-│   │   ├── [daily-standup.md](./templates/documents/daily-standup.md)     # 日常站会模板
-│   │   └── [retrospective.md](./templates/documents/retrospective.md)     # 回顾总结模板
-│   ├── 💻 [code/](./templates/code/)                 # 代码模板
-│   │   ├── [project-structure/](./templates/code/project-structure/)     # 项目结构模板
-│   │   ├── [readme-template.md](./templates/code/readme-template.md)     # README 模板
-│   │   └── [code-snippets/](./templates/code/code-snippets/)             # 代码片段
-│   └── ⚙️ [configs/](./templates/configs/)           # 配置模板
-│       ├── [docker/](./templates/configs/docker/)           # Docker 模板
-│       ├── [ci-cd/](./templates/configs/ci-cd/)             # CI/CD 模板
-│       └── [deployment/](./templates/configs/deployment/)   # 部署模板
-│
 ├── 🔗 resources/                      # 资源链接
-│   ├── 🔖 [bookmarks/](./resources/bookmarks/)       # 书签收藏
-│   ├── 📋 [cheatsheets/](./resources/cheatsheets/)   # 速查表
-│   ├── 📚 [references/](./resources/references/)     # 参考资料
-│   └── 📥 [downloads/](./resources/downloads/)       # 下载资源
-│
 ├── 📊 tracking/                       # 进度追踪
-│   ├── 📈 [habits/](./tracking/habits/)              # 习惯追踪
-│   ├── 🎯 [goals/](./tracking/goals/)                # 目标进度
-│   ├── 📖 [learning-progress/](./tracking/learning-progress/) # 学习进度
-│   └── 📋 [project-status/](./tracking/project-status/)     # 项目状态
-│
-├── 🗄️ archive/                        # 归档文件
-│   ├── 📁 [old-projects/](./archive/old-projects/)   # 旧项目归档
-│   ├── 🗑️ [deprecated-scripts/](./archive/deprecated-scripts/) # 废弃脚本
-│   └── 📜 [historical-notes/](./archive/historical-notes/)     # 历史笔记
-│
-├── 📖 [README.md](./README.md)                        # 项目说明文档
-├── 📋 [CHANGELOG.md](./CHANGELOG.md)                  # 更新日志
-├── 🏷️ [TAGS.md](./TAGS.md)                           # 标签索引
-└── 🔍 [SEARCH.md](./SEARCH.md)                       # 搜索指南
+└── 🗄️ archive/                        # 归档文件
 ```
+
+## 🗂️ 快速导航
+
+### 📚 笔记文档
+| 分类 | 描述 | 快速链接 |
+|------|------|----------|
+| 💻 技术笔记 | 编程、工具、框架学习 | [📂 tech](./notes/tech/) \| [🐍 programming](./notes/tech/programming/) \| [🔧 tools](./notes/tech/tools/) \| [🏗️ frameworks](./notes/tech/frameworks/) |
+| 📖 学习笔记 | 课程、书籍、教程记录 | [📂 learning](./notes/learning/) \| [🎓 courses](./notes/learning/courses/) \| [📚 books](./notes/learning/books/) \| [📝 tutorials](./notes/learning/tutorials/) |
+| 💼 工作笔记 | 项目、会议、想法记录 | [📂 work](./notes/work/) \| [🚀 projects](./notes/work/projects/) \| [🤝 meetings](./notes/work/meetings/) \| [💡 ideas](./notes/work/ideas/) |
+| 👤 个人笔记 | 日常、目标、反思总结 | [📂 personal](./notes/personal/) \| [📅 daily](./notes/personal/daily/) \| [🎯 goals](./notes/personal/goals/) \| [🤔 reflections](./notes/personal/reflections/) |
+
+### 🛠️ 脚本工具
+| 分类 | 描述 | 快速链接 |
+|------|------|----------|
+| 📦 安装脚本 | 开发环境和应用安装 | [📂 install](./scripts/install/) \| [💻 dev-environment](./scripts/install/dev-environment/) \| [📱 applications](./scripts/install/applications/) |
+| 🤖 自动化脚本 | 备份、部署、监控维护 | [📂 automation](./scripts/automation/) \| [💾 backup](./scripts/automation/backup/) \| [🚀 deployment](./scripts/automation/deployment/) |
+| 🔧 实用工具 | 文件管理和数据处理 | [📂 utilities](./scripts/utilities/) \| [📁 file-management](./scripts/utilities/file-management/) \| [📊 data-processing](./scripts/utilities/data-processing/) |
+| 🏷️ 命令别名 | Bash、Git、自定义命令 | [📂 aliases](./scripts/aliases/) \| [⚡ bash_aliases](./scripts/aliases/bash_aliases) \| [🔀 git_aliases](./scripts/aliases/git_aliases) |
+
+### 🎨 设计资源
+| 分类 | 描述 | 快速链接 |
+|------|------|----------|
+| 🖼️ Draw.io 图表 | 架构图、流程图、网络图 | [📂 drawio](./diagrams/drawio/) \| [🏗️ architecture](./diagrams/drawio/architecture/) \| [📊 flowcharts](./diagrams/drawio/flowcharts/) |
+| 🧠 思维导图 | 学习、项目、头脑风暴 | [📂 mindmaps](./diagrams/mindmaps/) \| [📚 learning](./diagrams/mindmaps/learning/) \| [🚀 projects](./diagrams/mindmaps/projects/) |
+| 📊 PlantUML | UML 图表和文档 | [📂 plantuml](./diagrams/plantuml/) \| [🖼️ exports](./diagrams/exports/) |
+
+### 🎮 游戏资源
+| 分类 | 描述 | 快速链接 |
+|------|------|----------|
+| 📖 游戏指南 | 攻略、策略、技巧分享 | [📂 guides](./gaming/guides/) \| [🗺️ walkthroughs](./gaming/guides/walkthroughs/) \| [🎯 strategies](./gaming/guides/strategies/) |
+| ⚙️ 游戏配置 | 设置、MOD、按键绑定 | [📂 configs](./gaming/configs/) \| [🎮 game-settings](./gaming/configs/game-settings/) \| [⌨️ keybindings](./gaming/configs/keybindings/) |
+| 📝 游戏评测 | 游戏评测、硬件推荐 | [📂 reviews](./gaming/reviews/) \| [🎮 game-reviews](./gaming/reviews/game-reviews/) \| [🔧 hardware-reviews](./gaming/reviews/hardware-reviews/) |
+
+### ⚙️ 配置文件
+| 分类 | 描述 | 快速链接 |
+|------|------|----------|
+| 💻 开发配置 | VS Code、Git、终端配置 | [📂 development](./configs/development/) \| [🆚 vscode](./configs/development/vscode/) \| [🔀 git](./configs/development/git/) |
+| 🖥️ 系统配置 | 系统文件、环境变量 | [📂 system](./configs/system/) \| [⚙️ dotfiles](./configs/system/dotfiles/) \| [🌍 environment](./configs/system/environment/) |
+| 📱 应用配置 | 浏览器、媒体、生产力工具 | [📂 applications](./configs/applications/) \| [🌐 browsers](./configs/applications/browsers/) \| [🎵 media](./configs/applications/media/) |
+
+### 📋 模板文件
+| 分类 | 描述 | 快速链接 |
+|------|------|----------|
+| 📄 文档模板 | 会议记录、项目计划模板 | [📂 documents](./templates/documents/) \| [📝 meeting-notes.md](./templates/documents/meeting-notes.md) \| [📊 project-plan.md](./templates/documents/project-plan.md) |
+| 💻 代码模板 | 项目结构、代码片段 | [📂 code](./templates/code/) \| [🏗️ project-structure](./templates/code/project-structure/) \| [📖 readme-template.md](./templates/code/readme-template.md) |
+| ⚙️ 配置模板 | Docker、CI/CD、部署模板 | [📂 configs](./templates/configs/) \| [🐳 docker](./templates/configs/docker/) \| [🔄 ci-cd](./templates/configs/ci-cd/) |
+
+### 🔗 资源链接
+| 分类 | 描述 | 快速链接 |
+|------|------|----------|
+| 🔖 书签收藏 | 开发、学习、工具资源 | [📂 bookmarks](./resources/bookmarks/) \| [💻 development.md](./resources/bookmarks/development.md) \| [📚 learning.md](./resources/bookmarks/learning.md) |
+| 📋 速查表 | 常用命令和语法参考 | [📂 cheatsheets](./resources/cheatsheets/) \| [📚 references](./resources/references/) \| [📥 downloads](./resources/downloads/) |
 
 ## 🚀 快速开始
 
@@ -179,17 +133,15 @@ cd personal-workspace
 
 ### 2. 运行初始化脚本
 ```bash
-# 创建目录结构
-python3 create_directories.py
+# 一键设置（推荐）
+python3 setup.py
 
-# 创建模板文件
-python3 create_template_files.py
-
-# 生成 README 文件
-python3 create_readme.py
-
-# 创建其他配置文件
-python3 create_config_files.py
+# 或分步执行
+python3 create_directories.py      # 创建目录结构
+python3 create_template_files.py   # 创建模板文件
+python3 create_readme.py           # 生成 README 文件
+python3 create_config_files.py     # 创建配置文件
+python3 create_dev_configs.py      # 创建开发环境配置
 ```
 
 ### 3. 配置个人信息
@@ -204,36 +156,32 @@ source scripts/aliases/bash_aliases
 ## 📚 使用指南
 
 ### 📝 笔记管理
-- 使用 Markdown 格式编写笔记
-- 按照主题和日期组织文件
-- 使用标签进行分类管理
+- **格式**: 使用 Markdown 格式编写笔记
+- **组织**: 按照主题和日期组织文件
+- **标签**: 使用标签进行分类管理
+- **链接**: 利用内部链接建立知识网络
 
 ### 🛠️ 脚本使用
-- 所有脚本都有详细的使用说明
-- 运行前请仔细阅读脚本注释
-- 建议先在测试环境中验证
+- **文档**: 所有脚本都有详细的使用说明
+- **安全**: 运行前请仔细阅读脚本注释
+- **测试**: 建议先在测试环境中验证
 
 ### 🎨 图表制作
-- Draw.io 文件统一存放在 `diagrams/drawio/` 目录
-- 导出的图片保存在 `diagrams/exports/` 目录
-- 思维导图使用 `.xmind` 或 `.mm` 格式
-
-### 🎮 游戏资源
-- 游戏配置文件定期备份
-- 攻略和评测使用 Markdown 格式
-- 重要存档及时同步
+- **Draw.io**: 统一存放在 `diagrams/drawio/` 目录
+- **导出**: 图片保存在 `diagrams/exports/` 目录
+- **思维导图**: 使用 `.xmind` 或 `.mm` 格式
 
 ## 🔧 配置说明
 
 ### 环境变量
 在 `configs/system/environment/` 目录下配置：
-- `dev.env` - 开发环境变量
-- `prod.env` - 生产环境变量
+- [`dev.env`](./configs/system/environment/dev.env) - 开发环境变量
+- [`prod.env`](./configs/system/environment/prod.env) - 生产环境变量
 
 ### 开发工具配置
-- **VS Code**: 配置文件在 `configs/development/vscode/`
-- **Git**: 全局配置在 `configs/development/git/`
-- **Terminal**: 终端配置在 `configs/development/terminal/`
+- **VS Code**: 配置文件在 [`configs/development/vscode/`](./configs/development/vscode/)
+- **Git**: 全局配置在 [`configs/development/git/`](./configs/development/git/)
+- **Terminal**: 终端配置在 [`configs/development/terminal/`](./configs/development/terminal/)
 
 ## 📖 文档索引
 
@@ -252,14 +200,14 @@ source scripts/aliases/bash_aliases
 
 使用标签快速分类和查找内容：
 
-- `#tech` - 技术相关内容
-- `#learning` - 学习资料
-- `#work` - 工作相关
-- `#personal` - 个人内容
-- `#gaming` - 游戏相关
-- `#tools` - 工具和脚本
-- `#config` - 配置文件
-- `#template` - 模板文件
+| 标签类型 | 标签示例 | 使用场景 |
+|----------|----------|----------|
+| 📋 内容类型 | `#tech` `#learning` `#work` `#personal` | 按内容性质分类 |
+| 🔧 技术栈 | `#python` `#javascript` `#docker` `#git` | 按技术类型分类 |
+| 📊 优先级 | `#urgent` `#important` `#reference` `#todo` | 按重要程度分类 |
+| 🎮 游戏类型 | `#strategy` `#rpg` `#fps` `#indie` | 按游戏类型分类 |
+
+详细标签使用指南请查看 [🏷️ 标签索引](./TAGS.md)
 
 ## 🔍 搜索技巧
 
@@ -284,14 +232,17 @@ find . -name "*关键词*" -type f
 find . -name "*.md" -type f
 ```
 
+完整搜索指南请查看 [🔍 搜索指南](./SEARCH.md)
+
 ## 📊 统计信息
 
 *最后更新: {datetime.now().strftime("%Y-%m-%d %H:%M:%S")}*
 
 - 📁 总目录数: 60+
-- 📄 模板文件: 10+
-- 🛠️ 脚本工具: 5+
+- 📄 模板文件: 15+
+- 🛠️ 脚本工具: 6+
 - 📚 文档类型: Markdown, Draw.io, PlantUML
+- 🔗 快速链接: 100+
 
 ## 🤝 贡献指南
 
@@ -329,6 +280,8 @@ git commit -m "fix(config): 修复 VS Code 配置问题"
 
 **💡 提示**: 这是一个活跃维护的个人工作空间，内容会持续更新和完善。
 
+**🔗 导航提示**: 点击表格中的链接可以快速跳转到对应目录，代码块中的路径仅供参考。
+
 *Happy Coding & Learning! 🚀*
 """
   
@@ -336,18 +289,20 @@ git commit -m "fix(config): 修复 VS Code 配置问题"
       with open("README.md", 'w', encoding='utf-8') as f:
           f.write(readme_content)
       
-      print("✅ README.md 文件创建成功!")
-      print("📊 文件信息:")
-      print(f"   - 文件大小: {len(readme_content)} 字符")
-      print(f"   - 包含超链接: 60+ 个")
-      print(f"   - 目录结构: 完整展示")
+      print("✅ 优化版 README.md 文件创建成功!")
+      print("📊 优化特性:")
+      print("   - 🔗 表格形式的可点击链接导航")
+      print("   - 📋 保留代码块的树状结构展示")
+      print("   - 🎯 快速导航区域，按分类整理")
+      print("   - 📱 移动端友好的表格布局")
+      print("   - 🏷️ 标签系统集成")
       
   except Exception as e:
-      print(f"❌ 创建 README.md 失败: {e}")
+      print(f"❌ 创建优化版 README.md 失败: {e}")
 
 if __name__ == "__main__":
   try:
-      create_readme_with_links()
+      create_optimized_readme()
   except KeyboardInterrupt:
       print("\n\n⚠️  操作被用户中断")
   except Exception as e:
