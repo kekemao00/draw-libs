@@ -1,4 +1,21 @@
-# 🗂️ Personal Workspace
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+README Generator with Hyperlinks
+生成带有超链接的 README 文件
+"""
+
+import os
+from pathlib import Path
+from datetime import datetime
+
+def create_readme_with_links():
+  """创建带有超链接的 README.md 文件"""
+  
+  print("📖 开始生成 README.md 文件...")
+  print("=" * 50)
+  
+  readme_content = f"""# 🗂️ Personal Workspace
 
 > 个人数字工作空间 - 统一管理知识、工具和资源的集成化仓库
 
@@ -269,7 +286,7 @@ find . -name "*.md" -type f
 
 ## 📊 统计信息
 
-*最后更新: 2025-06-26 16:23:02*
+*最后更新: {datetime.now().strftime("%Y-%m-%d %H:%M:%S")}*
 
 - 📁 总目录数: 60+
 - 📄 模板文件: 10+
@@ -313,3 +330,25 @@ git commit -m "fix(config): 修复 VS Code 配置问题"
 **💡 提示**: 这是一个活跃维护的个人工作空间，内容会持续更新和完善。
 
 *Happy Coding & Learning! 🚀*
+"""
+  
+  try:
+      with open("README.md", 'w', encoding='utf-8') as f:
+          f.write(readme_content)
+      
+      print("✅ README.md 文件创建成功!")
+      print("📊 文件信息:")
+      print(f"   - 文件大小: {len(readme_content)} 字符")
+      print(f"   - 包含超链接: 60+ 个")
+      print(f"   - 目录结构: 完整展示")
+      
+  except Exception as e:
+      print(f"❌ 创建 README.md 失败: {e}")
+
+if __name__ == "__main__":
+  try:
+      create_readme_with_links()
+  except KeyboardInterrupt:
+      print("\n\n⚠️  操作被用户中断")
+  except Exception as e:
+      print(f"\n❌ 发生错误: {e}")

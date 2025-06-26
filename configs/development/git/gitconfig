@@ -1,0 +1,40 @@
+[user]
+  name = Your Name
+  email = your.email@example.com
+
+[core]
+  editor = code --wait
+  autocrlf = input
+  safecrlf = true
+
+[push]
+  default = simple
+
+[pull]
+  rebase = false
+
+[alias]
+  st = status
+  co = checkout
+  br = branch
+  ci = commit
+  di = diff
+  lg = log --oneline --graph --decorate --all
+  last = log -1 HEAD
+  unstage = reset HEAD --
+  visual = !gitk
+
+[color]
+  ui = auto
+
+[diff]
+  tool = vscode
+
+[difftool "vscode"]
+  cmd = code --wait --diff $LOCAL $REMOTE
+
+[merge]
+  tool = vscode
+
+[mergetool "vscode"]
+  cmd = code --wait $MERGED

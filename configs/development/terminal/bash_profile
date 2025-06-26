@@ -1,0 +1,35 @@
+# Personal Workspace Bash Profile
+# 添加到 ~/.bashrc 或 ~/.bash_profile
+
+# 设置环境变量
+export WORKSPACE_ROOT="$HOME/personal-workspace"
+export PATH="$WORKSPACE_ROOT/scripts:$PATH"
+
+# 加载别名
+if [ -f "$WORKSPACE_ROOT/scripts/aliases/bash_aliases" ]; then
+  source "$WORKSPACE_ROOT/scripts/aliases/bash_aliases"
+fi
+
+# 加载自定义命令
+if [ -f "$WORKSPACE_ROOT/scripts/aliases/custom_commands" ]; then
+  source "$WORKSPACE_ROOT/scripts/aliases/custom_commands"
+fi
+
+# Python 环境
+export PYTHONPATH="$WORKSPACE_ROOT:$PYTHONPATH"
+
+# Node.js 环境
+export NODE_PATH="$WORKSPACE_ROOT/node_modules:$NODE_PATH"
+
+# 自定义提示符
+export PS1="\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ "
+
+# 历史记录设置
+export HISTSIZE=10000
+export HISTFILESIZE=20000
+export HISTCONTROL=ignoredups:erasedups
+
+# 启动时显示工作空间信息
+echo "🚀 Personal Workspace Environment Loaded"
+echo "📁 Workspace: $WORKSPACE_ROOT"
+echo "🛠️  Available commands: workspace, newnote, backup, searchnotes"

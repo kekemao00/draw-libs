@@ -1,0 +1,33 @@
+# Git Aliases Configuration
+# Git 命令别名配置
+
+[alias]
+  # 基础操作
+  st = status
+  co = checkout
+  br = branch
+  ci = commit
+  di = diff
+  
+  # 日志查看
+  lg = log --oneline --graph --decorate --all
+  last = log -1 HEAD
+  
+  # 分支操作
+  new = checkout -b
+  del = branch -d
+  
+  # 暂存操作
+  unstage = reset HEAD --
+  
+  # 远程操作
+  sync = !git fetch && git rebase origin/main
+  
+  # 统计信息
+  stats = shortlog -sn
+  
+  # 撤销操作
+  undo = reset --soft HEAD~1
+  
+  # 清理操作
+  cleanup = !git branch --merged | grep -v '\*\|main\|master' | xargs -n 1 git branch -d

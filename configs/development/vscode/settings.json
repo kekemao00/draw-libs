@@ -1,0 +1,21 @@
+{
+    "editor.fontSize": 14,
+    "editor.tabSize": 4,
+    "editor.insertSpaces": true,
+    "editor.wordWrap": "on",
+    "editor.minimap.enabled": true,
+    "editor.formatOnSave": true,
+    "files.autoSave": "afterDelay",
+    "files.autoSaveDelay": 1000,
+    "workbench.colorTheme": "Dark+ (default dark)",
+    "workbench.iconTheme": "vscode-icons",
+    "terminal.integrated.fontSize": 12,
+    "python.defaultInterpreterPath": "/usr/bin/python3",
+    "python.linting.enabled": true,
+    "python.linting.pylintEnabled": true,
+    "git.enableSmartCommit": true,
+    "git.confirmSync": false,
+    "extensions.autoUpdate": true,
+    "markdown.preview.fontSize": 14,
+    "markdown.preview.lineHeight": 1.6
+}
