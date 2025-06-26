@@ -1,0 +1,14 @@
+services:
+  3x-ui:
+    image: ghcr.io/mhsanaei/3x-ui:latest
+    container_name: 3x-ui
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"      # 标准 HTTPS 端口
+      - "2053:2053"
+    volumes:
+      - ./data:/etc/x-ui
+      - ./data/cert:/etc/x-ui/cert
+    environment:
+      - TZ=Asia/Shanghai

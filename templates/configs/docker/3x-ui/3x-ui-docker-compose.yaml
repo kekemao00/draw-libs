@@ -1,0 +1,61 @@
+version: '3.8'
+
+services:
+  3x-ui:
+    image: ghcr.io/mhsanaei/3x-ui:latest
+    container_name: 3x-ui
+    restart: unless-stopped
+    
+    # 网络模式 - 使用host模式以获得最佳性能
+    network_mode: host
+    
+    # 环境变量配置
+    environment:
+      - XRAY_VMESS_AEAD_FORCED=false
+      - TZ=Asia/Shanghai
+    
+    # 卷挂载 - 持久化数据
+    volumes:
+      - ./3x-ui/db/:/etc/x-ui/
+      - ./3x-ui/cert/:/root/cert/
+      - ./3x-ui/logs/:/var/log/
+      - /etc/localtime:/etc/localtime:ro
+    
+    # 端口映射 (如果不使用host网络模式，取消注释以下端口)
+    # ports:
+    #   - "2053:2053"     # 3x-ui 管理面板端口
+    #   - "443:443"       # HTTPS
+    #   - "80:80"         # HTTP
+    #   - "8080:8080"     # 可选的代理端口
+    #   - "8443:8443"     # 可选的代理端口
+    #   - "10000-10010:10000-10010"  # 动态端口范围
+    
+    # 权限设置
+    privileged: true
+    
+    # 健康检查
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:2053 || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+
+# 如果不使用host网络模式，可以创建自定义网络
+# networks:
+#   3x-ui-network:
+#     driver: bridge
+#     ipam:
+#       config:
+#         - subnet: 172.20.0.0/16
+
+# 可选：添加数据库服务（如果需要外部数据库）
+# services:
+#   database:
+#     image: sqlite:latest
+#     container_name: 3x-ui-db
+#     restart: unless-stopped
+#     volumes:
+#       - ./3x-ui/database:/var/lib/sqlite
+#     networks:
+#       - 3x-ui-network
