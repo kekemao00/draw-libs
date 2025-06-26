@@ -1,6 +1,7 @@
 集成化的个人知识管理与开发工具仓库，统一管理学习笔记、实用脚本、设计图表、游戏资料等数字资产。
 
 Personal Workspace Directory Structure
+```
 personal-workspace/
 ├── 📚 notes/
 │   ├── tech/
@@ -124,6 +125,8 @@ personal-workspace/
 ├── 📋 CHANGELOG.md            # 更新日志
 ├── 🏷️ TAGS.md                # 标签索引
 └── 🔍 SEARCH.md               # 搜索指南
+```
+
 📝 特殊文件说明
 README.md
 仓库整体介绍
