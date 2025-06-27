@@ -1,0 +1,34 @@
+services:
+  3x-ui:
+    image: ghcr.io/mhsanaei/3x-ui:latest
+    container_name: 3x-ui
+    restart: unless-stopped
+
+    # 改为端口映射模式，而不是 host 模式
+    ports:
+      - "2053:2053"   # HTTP 管理端口
+      - "443:443"     # HTTPS 端口
+      - "80:80"       # HTTP 端口
+
+    # 环境变量配置
+    environment:
+      - XRAY_VMESS_AEAD_FORCED=false
+      - TZ=Asia/Shanghai
+
+    # 卷挂载 - 持久化数据
+    volumes:
+      - ./3x-ui/db/:/etc/x-ui/
+      - ./3x-ui/cert/:/root/cert/
+      - ./3x-ui/logs/:/var/log/
+      - /etc/localtime:/etc/localtime:ro
+
+    # 权限设置
+    privileged: true
+
+    # 健康检查
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:2053 || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
