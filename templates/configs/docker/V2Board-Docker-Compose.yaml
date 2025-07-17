@@ -1,0 +1,47 @@
+version: '3.8'
+services:
+  v2board:
+    image: gz1903/v2board:latest
+    container_name: v2board
+    ports:
+      - "8080:80"
+    volumes:
+      - ./data:/var/www/html/storage
+      - ./config:/var/www/html/config
+      - ./logs:/var/www/html/storage/logs
+    environment:
+      - DB_HOST=mysql
+      - DB_DATABASE=v2board
+      - DB_USERNAME=v2board
+      - DB_PASSWORD=your_password
+    restart: unless-stopped
+    depends_on:
+      mysql:
+        condition: service_healthy
+    command: >
+      bash -c "
+        yum install -y php-gd libpng libpng-devel freetype freetype-devel &&
+        echo 'extension=gd' >> /etc/php.ini &&
+        php-fpm &&
+        nginx &&
+        tail -f /dev/null
+      "
+
+  mysql:
+    image: mysql:8.0
+    container_name: v2board_mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root_password
+      - MYSQL_DATABASE=v2board
+      - MYSQL_USER=v2board
+      - MYSQL_PASSWORD=your_password
+    volumes:
+      - mysql_data:/var/lib/mysql
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
+
+volumes:
+  mysql_data:

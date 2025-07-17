@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>智慧数字 - 专业数字营销咨询服务</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Microsoft YaHei', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #2c5aa0;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #2c5aa0;
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 120px 0 80px;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: #ff6b6b;
+            color: white;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+        
+        .btn:hover {
+            background: #ff5252;
+        }
+        
+        .services {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #2c5aa0;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .about {
+            padding: 80px 0;
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        
+        .team-section {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .team-member {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .team-member:hover {
+            transform: translateY(-5px);
+        }
+        
+        .team-member img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1rem;
+            border: 3px solid #2c5aa0;
+        }
+        
+        .stats {
+            padding: 80px 0;
+            background: #2c5aa0;
+            color: white;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        
+        .contact {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+        
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .gallery-section {
+            padding: 80px 0;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .gallery-item {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: white;
+            padding: 2rem 1rem 1rem;
+            text-align: center;
+        }
+        
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">智慧数字</div>
+            <ul class="nav-links">
+                <li><a href="#home">首页</a></li>
+                <li><a href="#services">服务</a></li>
+                <li><a href="#about">关于我们</a></li>
+                <li><a href="#team">团队</a></li>
+                <li><a href="#gallery">案例展示</a></li>
+                <li><a href="#contact">联系我们</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section id="home" class="hero">
+        <div class="container">
+            <h1>数字化转型的领航者</h1>
+            <p>专业的数字营销咨询服务，助力企业在数字时代蓬勃发展</p>
+            <a href="#contact" class="btn">免费咨询</a>
+        </div>
+    </section>
+    
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="section-title">我们的服务</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">📊</div>
+                    <h3>数据分析</h3>
+                    <p>深度挖掘用户数据，为您的营销决策提供科学依据，提升ROI和转化率。</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🎯</div>
+                    <h3>精准营销</h3>
+                    <p>基于大数据分析，制定个性化营销策略，精准触达目标客户群体。</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🚀</div>
+                    <h3>品牌推广</h3>
+                    <p>全渠道品牌建设，提升品牌知名度和影响力，打造行业领先地位。</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">💡</div>
+                    <h3>创新咨询</h3>
+                    <p>前沿技术应用咨询，帮助企业把握数字化机遇，实现业务创新。</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🔧</div>
+                    <h3>技术支持</h3>
+                    <p>专业的技术团队提供全方位支持，确保项目顺利实施和稳定运行。</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📈</div>
+                    <h3>效果优化</h3>
+                    <p>持续监控和优化营销效果，确保投资回报最大化。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div>
+                    <h2 class="section-title" style="text-align: left;">关于智慧数字</h2>
+                    <p style="margin-bottom: 1rem;">智慧数字成立于2018年，是一家专注于数字营销咨询的创新型企业。我们拥有一支经验丰富的专业团队，致力于为客户提供最优质的数字化解决方案。</p>
+                    <p style="margin-bottom: 1rem;">公司总部位于上海，在北京、深圳、杭州等地设有分支机构。我们服务过超过500家企业客户，涵盖电商、金融、教育、制造业等多个行业。</p>
+                    <p style="margin-bottom: 1rem;">我们的使命是帮助企业在数字化浪潮中抓住机遇，实现可持续发展。通过专业的数据分析、创新的营销策略和优质的客户服务，我们已经帮助众多企业实现了业务增长和品牌价值提升。</p>
+                    <p>我们坚信，在数字化时代，只有不断创新和适应变化，才能在激烈的市场竞争中脱颖而出。</p>
+                </div>
+                <div>
+                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="团队合作" style="width: 100%; border-radius: 10px;">
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="team" class="team-section">
+        <div class="container">
+            <h2 class="section-title">我们的团队</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="张明">
+                    <h3>张明</h3>
+                    <p><strong>创始人 & CEO</strong></p>
+                    <p>10年数字营销经验，曾服务多家知名企业</p>
+                </div>
+                <div class="team-member">
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="李雪">
+                    <h3>李雪</h3>
+                    <p><strong>数据分析总监</strong></p>
+                    <p>专注于大数据分析和商业智能应用</p>
+                </div>
+                <div class="team-member">
+                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="王强">
+                    <h3>王强</h3>
+                    <p><strong>技术总监</strong></p>
+                    <p>15年技术开发经验，精通各种营销技术栈</p>
+                </div>
+                <div class="team-member">
+                    <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="陈佳">
+                    <h3>陈佳</h3>
+                    <p><strong>创意总监</strong></p>
+                    <p>资深品牌策划专家，擅长创意营销策略</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div>
+                    <div class="stat-number">500+</div>
+                    <div>服务客户</div>
+                </div>
+                <div>
+                    <div class="stat-number">98%</div>
+                    <div>客户满意度</div>
+                </div>
+                <div>
+                    <div class="stat-number">50+</div>
+                    <div>专业团队</div>
+                </div>
+                <div>
+                    <div class="stat-number">6年</div>
+                    <div>行业经验</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="gallery" class="gallery-section">
+        <div class="container">
+            <h2 class="section-title">案例展示</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="数据分析项目">
+                    <div class="gallery-overlay">
+                        <h3>电商数据分析项目</h3>
+                        <p>帮助客户提升30%转化率</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="品牌推广项目">
+                    <div class="gallery-overlay">
+                        <h3>品牌数字化推广</h3>
+                        <p>全渠道品牌曝光增长200%</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="团队协作">
+                    <div class="gallery-overlay">
+                        <h3>企业数字化转型</h3>
+                        <p>完整的数字化解决方案</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">联系我们</h2>
+            <div class="contact-form">
+                <form>
+                    <div class="form-group">
+                        <label for="name">姓名</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">邮箱</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="company">公司</label>
+                        <input type="text" id="company" name="company">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">留言</label>
+                        <textarea id="message" name="message" rows="5" placeholder="请描述您的需求..."></textarea>
+                    </div>
+                    <button type="submit" class="btn" style="width: 100%;">发送消息</button>
+                </form>
+            </div>
+            
+            <div style="text-align: center; margin-top: 3rem;">
+                <p><strong>联系信息</strong></p>
+                <p>📧 如需联系请通过表单留言</p>
+                <p>🏢 我们为客户提供线上咨询服务</p>
+                <p>⏰ 工作时间：周一至周五 9:00-18:00</p>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="#privacy">隐私政策</a>
+                <a href="#terms">服务条款</a>
+                <a href="#careers">招聘信息</a>
+                <a href="#news">新闻动态</a>
+            </div>
+            <p>&copy; 2024 智慧数字咨询. 保留所有权利.</p>
+        </div>
+    </footer>
+    
+    <script>
+        // 简单的平滑滚动效果
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // 表单提交处理
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('感谢您的留言！我们会尽快与您联系。');
+        });
+        
+        // 统计数字动画效果
+        function animateNumbers() {
+            const numbers = document.querySelectorAll('.stat-number');
+            numbers.forEach(number => {
+                const target = parseInt(number.textContent);
+                let current = 0;
+                const increment = target / 50;
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        current = target;
+                        clearInterval(timer);
+                    }
+                    if (number.textContent.includes('+')) {
+                        number.textContent = Math.floor(current) + '+';
+                    } else if (number.textContent.includes('%')) {
+                        number.textContent = Math.floor(current) + '%';
+                    } else {
+                        number.textContent = Math.floor(current) + '年';
+                    }
+                }, 50);
+            });
+        }
+        
+        // 当页面加载完成后执行动画
+        window.addEventListener('load', () => {
+            setTimeout(animateNumbers, 1000);
+        });
+    </script>
+</body>
+</html>
